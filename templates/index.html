@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Laman Index</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+        integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+      // Untuk logout, anda hanya tinggal
+      // menghapus token anda dari cookies browser anda
+
+      function logout(){
+        $.removeCookie('mytoken');
+        alert('You have been logged out!')
+        window.location.href='/login'
+      }
+
+    </script>
+
+  </head>
+  <body>
+    <p>
+      <h1 class="title">This page can only be viewed for 5 seconds after logging in</h1>
+      <h1 class="subtitle">Please try refreshing the page</h1>
+    </p>
+    <h5 class="subtitle">My nickname: {{nickname}}</h5>
+    <button class="button is-danger" onclick="logout()">Logout</button>
+  </body>
+</html>

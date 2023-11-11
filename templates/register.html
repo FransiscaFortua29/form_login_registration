@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Laman Register</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+        integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+      // Pada fungsi ini, kita menggunakan id user,
+      // password, dan nickname, untuk mendaftarkan mereka
+      // ke database kita
+      function register() {
+        $.ajax({
+          type: "POST",
+          url: "/api/register",
+          data: {
+            id_give: $("#userid").val(),
+            pw_give: $("#userpw").val(),
+            nickname_give: $("#usernick").val(),
+          },
+          success: function (response) {
+            if (response["result"] === "success") {
+              alert("User registration complete!");
+              window.location.href = "/login";
+            } else {
+              alert(response["msg"]);
+            }
+          },
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div class="section has-text-centered">
+      <h1 class="title">User Registration Page</h1>
+      <div class="container" style="width: 60%">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label" for="userid">ID</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input
+                  type="text"
+                  class="input"
+                  id="userid"
+                  aria-describedby="emailHelp"
+                  placeholder="My ID"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label" for="userpw">PW</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input
+                  type="password"
+                  class="input"
+                  id="userpw"
+                  placeholder="My Password"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label" for="usernick">NICKNAME</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input
+                  type="text"
+                  class="input"
+                  id="usernick"
+                  placeholder="My Nickname"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="button is-primary" onclick="register()">User Registration</button>
+      </div>
+    </div>
+  </body>
+</html>
